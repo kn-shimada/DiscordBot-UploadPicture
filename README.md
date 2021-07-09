@@ -1,0 +1,2 @@
+# 写真をGoogleDriveに上げるBot
+Albireoにある植物の写真を日付ごとにフォルダを作って上げてくれるBot
