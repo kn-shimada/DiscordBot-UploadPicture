@@ -1,3 +1,6 @@
+use std::env;
+use dotenv::dotenv;
+
 use serenity::{
     async_trait,
     model::{channel::Message, gateway::Ready},
@@ -23,7 +26,8 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
-    let token = "ODYzMDM2MDYxNDE1MTEyNzI1.YOhC9w.KaxHTAC1P0qbXB9ZnTtXlRxJMXU";
+    dotenv().ok();
+    let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
     let mut client =
         Client::builder(&token).event_handler(Handler).await.expect("Err creating client");
     if let Err(why) = client.start().await {
